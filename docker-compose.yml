@@ -2,9 +2,14 @@ db:
     container_name: ceom_db
     image: postgis/postgis
 
+    #command: bash -c "touch anything && tail -f anything"
+
     volumes:
       - /data/web/ceom/postgres:/var/lib/postgresql/data
       - /docker-projects/eomf-postgres-data:/eomf-postgres-data #TODO: Remove this once the new postgres db is fully up and running
 
     env_file:
       - ./.env.db
+
+    ports:
+      - 5432:5432
