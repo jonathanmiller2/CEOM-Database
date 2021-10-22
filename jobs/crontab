@@ -1,0 +1,4 @@
+0 11 * * 0 pg_dump -h ceom_db -U ceom --no-password > /data/backups/db_weekly_dump
+0 11 24 * * pg_dump -h ceom_db -U ceom --no-password > /data/backups/db_monthly_dump
+0 11 24 10 * pg_dump -h ceom_db -U ceom --no-password > /data/backups/db_yearly_dump
+0 11 * * 0 cp -r media/ backups/media_backup/

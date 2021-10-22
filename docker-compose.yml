@@ -1,4 +1,5 @@
-db:
+services:
+  db:
     container_name: ceom_db
     image: postgis/postgis
 
@@ -13,3 +14,26 @@ db:
 
     ports:
       - 5432:5432
+
+    networks:
+      - dbnetwork
+
+  jobs:
+    container_name: ceom_jobs
+    build: 
+      context: ./jobs
+      args:
+      - POSTGRES_DBNAME=$POSTGRES_DBNAME
+      - POSTGRES_USER=$POSTGRES_USER
+      - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+
+    env_file:
+      - ./.env.db
+
+    volumes:
+      - /data/web/ceom/:/data/
+    networks:
+      - dbnetwork
+
+networks:
+  dbnetwork:
