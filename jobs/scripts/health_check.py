@@ -15,11 +15,11 @@ if r.status_code != 200:
     message['Subject'] = "CEOM Website Health Check Failure"
     message.set_content(f"Health check failed! Could not reach {URL_TO_CHECK}.\nStatus code: {r.status_code}.\n\n{r.text}")
 
-message['From'] = SENDER
-message['To'] = RECEIVERS
+    message['From'] = SENDER
+    message['To'] = RECEIVERS
 
-with SMTP(host=HOST, port=PORT) as smtp:
-    smtp.send_message(message)
+    with SMTP(host=HOST, port=PORT) as smtp:
+        smtp.send_message(message)
 
 
 
