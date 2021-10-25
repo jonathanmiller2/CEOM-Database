@@ -16,6 +16,9 @@ RUN echo ceom_db:5432:${POSTGRES_DBNAME}:${POSTGRES_USER}:${POSTGRES_PASSWORD} >
 RUN chmod 0600 /root/.pgpass
 
 RUN apt-get update
+RUN apt-get install -y python3 python3-pip
+RUN pip3 install requests
+
 RUN apt-get -y install cron
 RUN crontab /etc/cron.d/cron-backups
 CMD cron && tail -f /var/log/cron.log
