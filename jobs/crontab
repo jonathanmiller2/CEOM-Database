@@ -1,5 +1,5 @@
 0 11 * * 0 pg_dump -h ceom_db -U ceom --no-password > /data/backups/db_weekly_dump
 0 11 24 * * pg_dump -h ceom_db -U ceom --no-password > /data/backups/db_monthly_dump
 0 11 24 10 * pg_dump -h ceom_db -U ceom --no-password > /data/backups/db_yearly_dump
-0 11 * * 0 cp -r /data/media/ /data/backups/media_backup/
+0 11 * * 0 rsync -rv --exclude 'cache' /data/media/ /data/backups/media_backup/ >> /var/log/cron.log 2>&1
 0 * * * * python3 /code/jobs/scripts/health_check.py >> /var/log/cron.log 2>&1
