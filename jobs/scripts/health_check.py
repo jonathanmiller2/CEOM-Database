@@ -5,7 +5,7 @@ import requests
 SENDER = "ceomsupport@ou.edu"
 HOST = "relay.ou.edu"
 PORT = 25
-RECEIVERS = ["ceomsupport@ou.edu", "jonathan.g.miller@ou.edu"]
+RECEIVERS = ["ceomsupport@ou.edu", "jonathan.g.miller@ou.edu", "mariah.vadak@ou.edu", "thi.thuy.trang.tran-1@ou.edu"]
 URL_TO_CHECK = "https://www.ceom.ou.edu"
 
 r = requests.get(URL_TO_CHECK)
